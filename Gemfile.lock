@@ -36,9 +36,14 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    addressable (2.4.0)
     ansi (1.5.0)
     arel (6.0.3)
     bcrypt (3.1.11)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.2.2)
@@ -54,6 +59,8 @@ GEM
     comic_vine (0.1.4)
       multi_json
     concurrent-ruby (1.0.2)
+    crack (0.4.3)
+      safe_yaml (~> 1.0.0)
     debug_inspector (0.0.2)
     docile (1.1.5)
     dotenv (2.1.1)
@@ -67,6 +74,7 @@ GEM
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    hashdiff (0.3.0)
     hashie (3.4.4)
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
@@ -96,12 +104,18 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
+    minispec-metadata (2.0.0)
+      minitest
     minitest (5.9.0)
     minitest-reporters (1.1.11)
       ansi
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    minitest-vcr (1.4.0)
+      minispec-metadata (~> 2.0)
+      minitest (>= 4.7.5)
+      vcr (>= 2.9)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
@@ -165,6 +179,7 @@ GEM
     rdoc (4.2.2)
       json (~> 1.4)
     ruby-progressbar (1.8.1)
+    safe_yaml (1.0.4)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -202,17 +217,23 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.1)
       execjs (>= 0.3.0, < 3)
+    vcr (3.0.3)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    webmock (2.1.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+      hashdiff
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  better_errors
   byebug
   coffee-rails (~> 4.1.0)
   comic_vine
@@ -223,6 +244,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   marvelite
   minitest-reporters
+  minitest-vcr
   omniauth-oauth2
   pg (~> 0.15)
   pry
@@ -236,6 +258,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console
+  webmock
 
 BUNDLED WITH
    1.11.2
