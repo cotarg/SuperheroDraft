@@ -24,6 +24,7 @@ gem 'httparty'
 gem 'rails_12factor', group: :production
 gem 'marvelite'
 gem 'comic_vine'
+gem 'omniauth-oauth2'
 
 
 # Use Unicorn as the app server
