@@ -16,6 +16,7 @@ class CreateTeams < ActiveRecord::Migration
       t.string :villain_four
 
       t.string :cover_url
+      t.string :playlist_url
       t.text :pitch
 
       t.timestamps null: false
