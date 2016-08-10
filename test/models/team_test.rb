@@ -1,4 +1,5 @@
-require 'test_helper'
+require 'minitest/autorun'
+require 'minitest/pride'
 
 class TeamTest < ActiveSupport::TestCase
   test "the truth" do
@@ -6,8 +7,7 @@ class TeamTest < ActiveSupport::TestCase
   end
 
   test "it exists" do
-    team = Team.save()
-    team.wont_be_nil
+    refute_nil SuperheroDraft::Team
   end
 
 end
