@@ -24,6 +24,9 @@ class Hero
     # this will utilize comic_vine to find hero and deliver for normalizing
   end
 
+  # I'm kind of thinking I want a method that finds all heroes containing
+  # given word in their name or title, and serves them back
+  # to be confirmed, at which point their id can be recorded.
 
 
 end
