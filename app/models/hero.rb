@@ -4,6 +4,7 @@ client = Marvelite::API::Client.new( :public_key => 'MARVEL_API_PRIVATE', :priva
 ComicVine::API.key = 'COMICVINE_API_PRIVATE'
 
 class Hero
+  attr_reader :name
 
   def initialize(name)
     @name = name
