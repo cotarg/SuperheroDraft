@@ -17,4 +17,4 @@
 /tmp
 .DS_Store
 .env
-config/secrets.yml
+/config/secrets.yml
