@@ -27,12 +27,16 @@ class Hero
 
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
-    search = ComicVine::API.search('character', char_name_string)
+    search = ComicVine::API.search('characters', char_name_string)
     heroes = []
     search.each do |char|
       heroes << char.name
     end
     return heroes
+  end
+
+  def self.find_char(character_id_string)
+    hero = ComicVine::API.character(character_id_string)
   end
 
   # I'm kind of thinking I want a method that finds all heroes containing

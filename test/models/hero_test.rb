@@ -41,5 +41,11 @@ class HeroTest < ActiveSupport::TestCase
     refute_nil hero_two
   end
 
+  test "Hero can find specified hero by id" do
+    hero_three = Hero.find_char("1254")
+    puts hero_three.name
+    refute_nil hero_three
+  end
+
 
 end
