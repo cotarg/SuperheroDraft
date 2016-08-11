@@ -1,7 +1,6 @@
 require 'marvelite'
 require 'comic_vine'
-client = Marvelite::API::Client.new( :public_key => 'MARVEL_API_PRIVATE', :private_key => 'MARVEL_API_PUBLIC')
-ComicVine::API.key = 'COMICVINE_API_PRIVATE'
+ComicVine::API.key = ENV["COMICVINE_API_PRIVATE"]
 
 class Hero
   attr_reader :name
