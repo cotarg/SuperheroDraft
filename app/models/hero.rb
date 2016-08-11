@@ -16,13 +16,13 @@ class Hero
     @gender = gender # gender if supplied by the API
   end
 
-  def normalize(hero_lookup_results)
+  def self.normalize(hero_lookup_results)
     # this should take a return value from marvel or comicvine and
     # turn it into a hero object that can be used.
     name = hero_lookup_results.name
     aliases = hero_lookup_results.aliases
     description = hero_lookup_results.deck
-    image_url = hero_lookup_results.image.icon_url
+    image_url = hero_lookup_results.image["icon_url"]
     id_obj = {ComicVine: hero_lookup_results.id}
     gender = hero_lookup_results.gender
 
