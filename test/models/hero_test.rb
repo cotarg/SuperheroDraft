@@ -35,7 +35,9 @@ class HeroTest < ActiveSupport::TestCase
     refute_nil hero_one.id_obj
   end
 
+
   test "Hero can find all characters of a given name" do
+    skip
     hero_two = Hero.find_all("superman")
     puts hero_two.first
     refute_nil hero_two
