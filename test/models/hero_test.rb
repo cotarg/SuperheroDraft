@@ -39,18 +39,14 @@ class HeroTest < ActiveSupport::TestCase
   end
 
   test "Hero can find all characters of a given name" do
-    puts hero_two
     refute_nil hero_two
   end
 
   test "Hero can find specified hero by id" do
-    puts hero_three.name
     refute_nil hero_three
   end
 
   test "hero can be instantiated from Hero.find_char()" do
-    puts hero_four.name
-    puts hero_four.image_url
     refute_nil hero_four
   end
 
