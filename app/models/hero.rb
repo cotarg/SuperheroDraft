@@ -19,11 +19,17 @@ class Hero
   def normalize(hero_lookup_results)
     # this should take a return value from marvel or comicvine and
     # turn it into a hero object that can be used.
-  end
+    name = hero_lookup_results.name
+    aliases = hero_lookup_results.aliases
+    description = hero_lookup_results.deck
+    image_url = hero_lookup_results.image.icon_url
+    id_obj = {ComicVine: hero_lookup_results.id}
+    gender = hero_lookup_results.gender
 
-  # def marvel_lookup(hero)
-  #   # this will utilize marvelite to find hero and deliver for normalizing
-  # end
+    hero = Hero.new(name, aliases, description, image_url, id_obj, gender)
+
+    return hero
+  end
 
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
@@ -38,10 +44,4 @@ class Hero
   def self.find_char(character_id_string)
     hero = ComicVine::API.character(character_id_string)
   end
-
-  # I'm kind of thinking I want a method that finds all heroes containing
-  # given word in their name or title, and serves them back
-  # to be confirmed, at which point their id can be recorded.
-
-
 end
