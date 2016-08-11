@@ -5,6 +5,6 @@ class RemovingColumnsFromMatchTable < ActiveRecord::Migration
     remove_column :matches, :player_three, :integer
     remove_column :matches, :player_four, :integer
     remove_column :matches, :host_id, :integer
-    # remove_column :matches, :user, :string
+    remove_column :matches, :user, :string
   end
 end
