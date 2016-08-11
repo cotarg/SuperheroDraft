@@ -1,6 +1,7 @@
 # require 'marvelite' (removed for now as going with a CV only solution)
 require 'comic_vine'
-ComicVine::API.key = ENV["COMICVINE_API_PRIVATE"]
+require 'httparty'
+API_KEY = ENV["COMICVINE_API_PRIVATE"]
 
 class Hero
   attr_reader :name, :aliases, :description, :image_url, :id_obj, :gender
@@ -26,7 +27,8 @@ class Hero
 
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
-    
+
+    response = HTTParty.get("http://comicvine.gamespot.com/api/characters/?api_key=#{API_KEY}&format=json")
     # below currently commented out because my api key is failing and I'm testing manual calls.
     # ComicVine::API.search('character', char_name_string)
   end

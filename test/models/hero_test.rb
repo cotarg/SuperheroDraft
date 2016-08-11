@@ -37,7 +37,8 @@ class HeroTest < ActiveSupport::TestCase
 
   test "Hero can find all characters of a given name" do
     hero_two = Hero.find_all("superman")
-    refute_nil hero_two.first.fetch
+    puts hero_two.first
+    refute_nil hero_two
   end
 
 
