@@ -1,4 +1,4 @@
-require 'marvelite'
+# require 'marvelite' (removed for now as going with a CV only solution)
 require 'comic_vine'
 ComicVine::API.key = ENV["COMICVINE_API_PRIVATE"]
 
@@ -24,8 +24,9 @@ class Hero
   #   # this will utilize marvelite to find hero and deliver for normalizing
   # end
 
-  def find(hero_id)
+  def find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
+    ComicVine::API.search('character', char_name_string)
   end
 
   # I'm kind of thinking I want a method that finds all heroes containing
