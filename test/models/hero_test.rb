@@ -48,11 +48,10 @@ class HeroTest < ActiveSupport::TestCase
   end
 
   test "hero can be instantiated from Hero.find_char()" do
-    skip
     hero_four = Hero.normalize(Hero.find_char("1254"))
     puts hero_four.name
+    puts hero_four.image_url
     refute_nil hero_four
-
   end
 
 
