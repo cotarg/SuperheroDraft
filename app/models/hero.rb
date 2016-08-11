@@ -3,11 +3,16 @@ require 'comic_vine'
 ComicVine::API.key = ENV["COMICVINE_API_PRIVATE"]
 
 class Hero
-  attr_reader :name
+  attr_reader :name, :aliases, :description, :image_url, :id_obj, :gender
+  COMICVINE_API_CHAR_PREFIX = 4005
 
-  def initialize(name)
-    @name = name
-    # obviously more stuff goes in here, but I need to think about how I want to structure it.
+  def initialize(name, aliases, description, image_url, id_obj, gender)
+    @name = name # hero's canonical name
+    @aliases = aliases # all known aliases for hero
+    @description = description # brief description of hero (uses deck property of ComicVine API)
+    @image_url = image_url
+    @id_obj = id_obj # a key/value pair with the providing API and the ID of the hero
+    @gender = gender # gender if supplied by the API
   end
 
   def normalize(hero_lookup_results)
@@ -15,11 +20,11 @@ class Hero
     # turn it into a hero object that can be used.
   end
 
-  def marvel_lookup(hero)
-    # this will utilize marvelite to find hero and deliver for normalizing
-  end
+  # def marvel_lookup(hero)
+  #   # this will utilize marvelite to find hero and deliver for normalizing
+  # end
 
-  def comicvine_lookup(hero)
+  def find(hero_id)
     # this will utilize comic_vine to find hero and deliver for normalizing
   end
 

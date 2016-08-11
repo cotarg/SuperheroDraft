@@ -1,6 +1,9 @@
 class Match < ActiveRecord::Base
-  has_many :users
-  has_many :teams, through :users
+  has_one :player_one, class_name: "User"
+  has_one :player_two, class_name: "User"
+  has_one :player_three, class_name: "User"
+  has_one :player_four, class_name: "User"
+  has_many :teams
   
 
 end
