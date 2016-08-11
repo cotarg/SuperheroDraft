@@ -35,5 +35,10 @@ class HeroTest < ActiveSupport::TestCase
     refute_nil hero_one.id_obj
   end
 
+  test "Hero can find all characters of a given name" do
+    hero_two = Hero.find_all("superman")
+    refute_nil hero_two.first.fetch
+  end
+
 
 end

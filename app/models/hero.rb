@@ -24,7 +24,7 @@ class Hero
   #   # this will utilize marvelite to find hero and deliver for normalizing
   # end
 
-  def find_all(char_name_string)
+  def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
     ComicVine::API.search('character', char_name_string)
   end
