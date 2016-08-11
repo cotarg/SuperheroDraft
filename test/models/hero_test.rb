@@ -4,6 +4,9 @@ class HeroTest < ActiveSupport::TestCase
   extend Minitest::Spec::DSL
 
   let(:hero_one) { Hero.new("Clive", "Normal Guy", "A totally normal guy. Person Man.", "yahoo.com", "test data", "M") }
+  let(:hero_two) { Hero.find_all("superman") }
+  let(:hero_three) { Hero.find_char("1254") }
+  let(:hero_four) { Hero.normalize(Hero.find_char("1254")) }
 
   test "it exists" do
     refute_nil Hero
@@ -36,19 +39,16 @@ class HeroTest < ActiveSupport::TestCase
   end
 
   test "Hero can find all characters of a given name" do
-    hero_two = Hero.find_all("superman")
     puts hero_two
     refute_nil hero_two
   end
 
   test "Hero can find specified hero by id" do
-    hero_three = Hero.find_char("1254")
     puts hero_three.name
     refute_nil hero_three
   end
 
   test "hero can be instantiated from Hero.find_char()" do
-    hero_four = Hero.normalize(Hero.find_char("1254"))
     puts hero_four.name
     puts hero_four.image_url
     refute_nil hero_four
