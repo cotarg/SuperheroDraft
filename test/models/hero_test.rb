@@ -22,6 +22,7 @@ class HeroTest < ActiveSupport::TestCase
 
   test "a hero has a list of aliases" do
     refute_nil hero_one.aliases
+    assert_equal hero_one.aliases, "Normal Guy"
   end
 
   test "a hero has a description" do

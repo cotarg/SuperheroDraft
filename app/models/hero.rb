@@ -36,12 +36,12 @@ class Hero
     search = ComicVine::API.search('characters', char_name_string)
     heroes = []
     search.each do |char|
-      heroes << char.name
+      heroes << char
     end
     return heroes
   end
 
   def self.find_char(character_id_string)
-    hero = ComicVine::API.character(character_id_string)
+    ComicVine::API.character(character_id_string)
   end
 end
