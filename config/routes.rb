@@ -9,4 +9,8 @@ Rails.application.routes.draw do
   resources :matches
   resources :heroes
   resources :teams
+
+  get "/auth/:provider/" => "sessions#create"
+
+  delete '/logout' => 'sessions#destroy'
 end
