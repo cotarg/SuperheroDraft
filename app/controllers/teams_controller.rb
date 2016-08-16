@@ -7,11 +7,14 @@ class TeamsController < ApplicationController
   end
 
   def new
-    # instantiate a team
+    @team = Team.new
+    render :create_team
   end
 
   def create
-    # the form for adding first team
+    @team = Team.create(team_create_params[:team])
+
+    redirect_to team_path
   end
 
   def edit
@@ -20,10 +23,13 @@ class TeamsController < ApplicationController
 
   def show
     # shows all the details for a team.
+    @team = Team.find(:id)
+
+    redirect_to # what?
   end
 
   def update
-    
+
   end
 
   def destroy
