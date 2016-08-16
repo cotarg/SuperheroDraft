@@ -22,10 +22,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'rails_12factor', group: :production
-gem 'marvelite'
 gem 'comic_vine'
+gem 'rspotify'
+gem 'omniauth'
 gem 'omniauth-oauth2'
-
+gem 'rest-client'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
