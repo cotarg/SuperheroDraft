@@ -19,15 +19,11 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
-
     render :edit
-    # adding heroes to teams.
   end
 
   def show
-    # shows all the details for a team.
     @team = Team.find(:id)
-
     render :detail_view
   end
 
