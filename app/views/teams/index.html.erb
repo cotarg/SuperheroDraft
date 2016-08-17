@@ -1,3 +1,2 @@
-<% @teams.each do |team| %>
-  <%= team.name %>
-  <% end%>
+<h1>Teams</h1>
+<%= render partial: "team", collection: @teams %>

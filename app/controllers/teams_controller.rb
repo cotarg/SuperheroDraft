@@ -1,7 +1,7 @@
 class TeamsController < ApplicationController
 
   def index
-    # @teams = Team.where(user_id: 12) || Team.new() (This works, and is now the format for these.)
+    @teams = Team.where(user_id: 12) || Team.new() #(This works, and is now the format for these.)
 
     render :index
   end
