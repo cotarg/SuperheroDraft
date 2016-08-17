@@ -1,1 +1,10 @@
-<%= render :partial => '/log_entries/form', :log_entry => @log_book.log_entries.build %>
+This page needs to contain:
+
+A list of all participating teams.
+  * Display teams with vote buttons if in voting phase.
+
+A partial to create a team if there are still spaces in the match 
+
+Should this have two partials, one for players and one for viewers?
+
+<%= render :partial => '/teams/create_team', :log_entry => @log_book.log_entries.build %>
