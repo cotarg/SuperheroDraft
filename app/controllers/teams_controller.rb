@@ -1,8 +1,8 @@
 class TeamsController < ApplicationController
 
   def index
-    @teams = Team.where(user_id: 12) || Team.new() #(This works, and is now the format for these.)
-
+    # (Should show all of a user's teams)
+    @teams = Team.where(user_id: params[]) || Team.new() #(This works, and is now the format for these.)
     render :index
   end
 
@@ -36,7 +36,7 @@ class TeamsController < ApplicationController
 
   def delete
     Team.destroy(params[:id])
-    if params[:id] = true 
+    if params[:id] == true 
       redirect_to root_path
     end 
   end

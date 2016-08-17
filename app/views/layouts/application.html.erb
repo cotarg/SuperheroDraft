@@ -7,6 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <%= image_tag("logos/Spotify_Icon_RGB_Green.png", :class => "img-rounded", :width => "50") unless @user %>
+    <%= link_to "Login With Spotify", "/auth/spotify" unless @user %>
+    
+    <% if @user %>
+      <% if !@user.image.nil? %>
+        <%= link_to image_tag("#{@user.image}", :class => "img-rounded", :width => "100"), "https://open.spotify.com/user/#{@user.uid}" %>
+      <% else %>
+        <%= link_to image_tag("logos/takeout-tunes-logo.png", :class => "img-rounded", :width => "100"), "https://open.spotify.com/user/#{@user.uid}" %>
+      <% end %>
+
+      <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> TakeoutTunes
+      <%= link_to "Logout", logout_path, method: "delete", :class => "btn btn-primary btn-sm" %>
+    <%end %>
+  </header>
 
 <%= yield %>
 
