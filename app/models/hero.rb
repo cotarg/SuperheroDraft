@@ -44,4 +44,16 @@ class Hero
   def self.find_char(character_id_string)
     ComicVine::API.character(character_id_string)
   end
+
+  def self.group(one, two, three, four, five, six)
+    hero_array = []
+    hero_array.push(Hero.normalize(Hero.find_char(one)))
+    hero_array.push(Hero.normalize(Hero.find_char(two)))
+    hero_array.push(Hero.normalize(Hero.find_char(three)))
+    hero_array.push(Hero.normalize(Hero.find_char(four)))
+    hero_array.push(Hero.normalize(Hero.find_char(five)))
+    hero_array.push(Hero.normalize(Hero.find_char(six)))
+    
+    return hero_array
+  end
 end

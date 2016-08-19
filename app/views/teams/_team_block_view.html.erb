@@ -1,0 +1,28 @@
+<h1><%=@team.name %></h1><br>
+
+<section>
+  <%= image_tag(@team.cover_url) %>
+</section>
+
+<section>
+  <ul>
+  <li>Hero: <%= @heroes[0].name %></li>
+  <li>Hero: <%= @team.hero_two %></li>
+  <li>Hero: <%= @team.hero_three %></li>
+  <li>Hero: <%= @team.hero_four %></li>
+  <li>Hero: <%= @team.hero_five %></li>
+  <li>Hero: <%= @team.hero_six %></li>
+  </ul>
+</section>
+
+(column) Team members
+(column) Cover image
+
+Pitch
+(Embedded spotify player with soundtrack if supplied.)
+
+Total votes
+
+Votes as proportion of match (graphic)
+
+If match closed, graphic if this team was the winner.

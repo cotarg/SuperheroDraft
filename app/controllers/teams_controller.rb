@@ -2,7 +2,8 @@ class TeamsController < ApplicationController
 
   def index
     # (Should show all of a user's teams)
-    @teams = Team.where(user_id: params[]) || Team.new() #(This works, and is now the format for these.)
+    # @teams = Team.where(user_id: params[]) || Team.new() #(This works, and is now the format for these.)
+    @teams = Team.where(user_id: 12) || Team.new() #(This works, and is now the format for these.)
     render :index
   end
 
@@ -13,7 +14,6 @@ class TeamsController < ApplicationController
 
   def create
     @team = Team.create(team_create_params[:team])
-
     redirect_to team_path
   end
 
@@ -23,11 +23,11 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(:id)
+    @team = Team.find(params[:id])
+    @heroes = Hero.group(@team.hero_one, @team.hero_two, @team.hero_three, @team.hero_four, @team.hero_five, @team.hero_six)
     render :detail_view
   end
 
-  # I think I need to change this ultimately since updating occurs in the context of matches? I dunno. Need to think about what I'm doing here.
   def update
     @team = Team.find(params[:id])
     @team.update(team_create_params[:team])

@@ -18,13 +18,16 @@
         <%= link_to image_tag("logos/takeout-tunes-logo.png", :class => "img-rounded", :width => "100"), "https://open.spotify.com/user/#{@user.uid}" %>
       <% end %>
 
-      <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> TakeoutTunes
+      <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> Superhero Draft
       <%= link_to "Logout", logout_path, method: "delete", :class => "btn btn-primary btn-sm" %>
+    
+      <%=link_to "Start a Match", new_match_path%>
+
     <%end %>
   </header>
-
+<br><br>
 <%= yield %>
-
+<br><br>
 <footer>This app strictly for fun and bar bets. All data provided by <a href="http://comicvine.gamespot.com/" alt="ComicVine Website" title="ComicVine">ComicVine</a>. </footer>
 
 </body>
