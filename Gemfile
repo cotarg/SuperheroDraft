@@ -25,7 +25,7 @@ gem 'rails_12factor', group: :production
 gem 'comic_vine'
 gem 'rspotify'
 gem 'omniauth'
-gem 'omniauth-oauth2'
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'rest-client'
 
 # Use Unicorn as the app server

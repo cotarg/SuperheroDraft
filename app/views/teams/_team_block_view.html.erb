@@ -5,15 +5,23 @@
 </section>
 
 <section>
+  <h2>Heroes</h2>
   <ul>
-  <li>Hero: <%= @heroes[0].name %></li>
-  <li>Hero: <%= @team.hero_two %></li>
-  <li>Hero: <%= @team.hero_three %></li>
-  <li>Hero: <%= @team.hero_four %></li>
-  <li>Hero: <%= @team.hero_five %></li>
-  <li>Hero: <%= @team.hero_six %></li>
+    <% @heroes.each do |hero| %>
+      <li><%= hero.name %></li>
+    <% end %>
   </ul>
 </section>
+
+<section>
+  <h2>Heroes</h2>
+  <ul>
+    <% @villains.each do |hero| %>
+      <li><%= hero.name %></li>
+    <% end %>
+  </ul>
+</section>
+
 
 (column) Team members
 (column) Cover image

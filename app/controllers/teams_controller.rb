@@ -24,7 +24,9 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
-    @heroes = Hero.group(@team.hero_one, @team.hero_two, @team.hero_three, @team.hero_four, @team.hero_five, @team.hero_six)
+    @heroes = Hero.group([@team.hero_one, @team.hero_two, @team.hero_three, @team.hero_four, @team.hero_five, @team.hero_six])
+    @villains = Hero.group([@team.villain_one, @team.villain_two, @team.villain_three, @team.villain_four])
+
     render :detail_view
   end
 

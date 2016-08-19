@@ -22,7 +22,7 @@ class Hero
     name = hero_lookup_results.name
     aliases = hero_lookup_results.aliases
     description = hero_lookup_results.deck
-    image_url = hero_lookup_results.image["icon_url"]
+    image_url = Hero.image_setter(hero_lookup_results.image, "icon_url")
     id_obj = {ComicVine: hero_lookup_results.id}
     gender = hero_lookup_results.gender
 
@@ -45,15 +45,23 @@ class Hero
     ComicVine::API.character(character_id_string)
   end
 
-  def self.group(one, two, three, four, five, six)
+  def self.group(array_of_inputs)
     hero_array = []
-    hero_array.push(Hero.normalize(Hero.find_char(one)))
-    hero_array.push(Hero.normalize(Hero.find_char(two)))
-    hero_array.push(Hero.normalize(Hero.find_char(three)))
-    hero_array.push(Hero.normalize(Hero.find_char(four)))
-    hero_array.push(Hero.normalize(Hero.find_char(five)))
-    hero_array.push(Hero.normalize(Hero.find_char(six)))
+    array_of_inputs.each do |input|
+      hero_array.push(Hero.normalize(Hero.find_char(input)))
+    end
     
     return hero_array
   end
+
+  private
+
+  def self.image_setter(image_url, key)
+    if image_url != nil
+      return image_url[key]
+    else
+      return "../assets/default_icons/hero.jpg"
+    end
+  end
+
 end
