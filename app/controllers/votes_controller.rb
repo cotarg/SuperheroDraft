@@ -1,22 +1,18 @@
 class VotesController < ApplicationController
-  def index
-  end
 
   def new
+    @vote = Vote.new
   end
 
   def create
+    @vote = Vote.create(vote_create_params)
+    redirect_to # current match? matches page?
   end
 
-  def edit
+  private
+
+  def vote_create_params
+    params.permit(vote: [:team, :user])
   end
 
-  def show
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 end
