@@ -60,7 +60,7 @@ class Hero
     if image_url != nil
       return image_url[key]
     else
-      return "../assets/default_icons/hero.jpg"
+      return "/../assets/default_icons/hero.jpg"
     end
   end
 

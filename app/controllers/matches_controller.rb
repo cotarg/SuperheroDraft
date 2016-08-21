@@ -18,6 +18,8 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+    @teams = Team.where(match_id: @match.id)
+    @votes = Match.assemble_match_votes(@match.id)
     render :match_page
   end
 

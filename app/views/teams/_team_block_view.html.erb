@@ -1,4 +1,6 @@
-<h1><%=@team.name %></h1><br>
+
+
+<h1><%= @team.name %></h1><br>
 
 <section>
   <%= image_tag(@team.cover_url) %>
@@ -8,7 +10,7 @@
   <h2>Heroes</h2>
   <ul>
     <% @heroes.each do |hero| %>
-      <li><%= hero.name %></li>
+      <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
     <% end %>
   </ul>
 </section>
@@ -17,20 +19,22 @@
   <h2>Heroes</h2>
   <ul>
     <% @villains.each do |hero| %>
-      <li><%= hero.name %></li>
+      <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
     <% end %>
   </ul>
 </section>
 
+<section>
+  <h2>Pitch</h2><br>
+  <%= @team.pitch %>
+</section>
 
-(column) Team members
-(column) Cover image
+<section>
+  <h2>Votes</h2>
 
-Pitch
-(Embedded spotify player with soundtrack if supplied.)
+  <p>Votes for this team: <%= @votes %></p>
+  <p>Total votes in match: <%= @match_votes.values.sum %></p>
+</section>
 
-Total votes
-
-Votes as proportion of match (graphic)
 
 If match closed, graphic if this team was the winner.
