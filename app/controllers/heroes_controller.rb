@@ -1,6 +1,7 @@
 class HeroesController < ApplicationController
 
   def index
+    @heroes = Hero.find_all(params[:search])
   end
 
   def new
