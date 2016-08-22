@@ -7,9 +7,11 @@ A partial to create a team if there are still spaces in the match
 
 Should this have two partials, one for players and one for viewers?
 
+<%= render partial: "/teams/team_block_view", collection: @teams %>
 
-<% @teams.each do |team| %><br>
-   <%= render :partial => '/teams/team_block_view', :team => team %>
+
+<% @votes.each do |key, value| %>
+  <p><%= Team.find(key).name %> votes: <%= value %></p>
 <%end%>
 
-<%= @votes %>
+<p><em>Total votes: <%= @votes.values.sum %>

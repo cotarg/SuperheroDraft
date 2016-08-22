@@ -1,6 +1,10 @@
 class MatchesController < ApplicationController
 
   def index
+    @open_matches = Match.where(phase: 1)
+    @voting_matches = Match.where(phase: 2)
+    @closed_matches = Match.where(phase: 3)
+
   end
 
   def new
