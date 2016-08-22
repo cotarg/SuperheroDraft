@@ -1,0 +1,7 @@
+<%= form_for @match do |f| %>
+  <%= f.label "Match Title" %>
+  <%= f.text_field :name %><br><br>
+  <%= f.label "Match Stakes" %>
+  <%= f.text_field :stakes %><br><br>
+  <%= f.submit "Create" %>
+<% end %>

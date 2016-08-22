@@ -5,19 +5,24 @@ class MatchesController < ApplicationController
     @voting_matches = Match.where(phase: 2)
     @closed_matches = Match.where(phase: 3)
 
+    render :index
   end
 
   def new
-    @Match = Match.new
+    @match = Match.new
     render :create_match
   end
 
   def create
-    @Match = Match.create(match_create_params[:match])
-    redirect_to match_path
+    @match = Match.create(match_create_params[:match])
+    @match_id = @match.id
+    redirect_to match_path(@match_id)
   end
 
   def edit
+    @match = Match.find(params[:id])
+    @user = Person.new
+    render :edit
   end
 
   def show
@@ -36,7 +41,7 @@ class MatchesController < ApplicationController
   private
 
   def match_create_params
-    params.permit(match: [:title, :stakes])
+    params.permit(match: [:name, :stakes])
   end
 
 end
