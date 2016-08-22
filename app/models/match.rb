@@ -5,16 +5,21 @@ class Match < ActiveRecord::Base
   has_one :player_four, class_name: "User"
   has_many :teams
   
-  def self.assemble_match_votes(match_id)
-    teams = Team.where(match_id: match_id)
+  def votes
+
     votes = {}
 
     teams.each do |team|
       id = team.id
-      votes[id] = Vote.where(team_id: team.id).count
+      votes[id] = team.votes.count
     end
 
     return votes
   end
 
 end
+
+# consider extracting to individual team calculations, 
+# and having match assemble them as a single object.
+
+# 

@@ -23,12 +23,9 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
-    @heroes = Hero.group([@team.hero_one, @team.hero_two, @team.hero_three, @team.hero_four, @team.hero_five, @team.hero_six])
-    @villains = Hero.group([@team.villain_one, @team.villain_two, @team.villain_three, @team.villain_four])
-    
+    @team = Team.find(params[:id])    
     @votes = Vote.where(team_id: @team.id).count
-    @match_votes = Match.assemble_match_votes(@team.match_id)
+    @match_votes = @team.match.votes
 
     render :detail_view
   end

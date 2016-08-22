@@ -1,24 +1,24 @@
 
 
-<h1><%= @team.name %></h1><br>
+<h1><%= team.name %></h1><br>
 
 <section>
-  <%= image_tag(@team.cover_url) %>
+  <%= image_tag(team.cover_url) %>
 </section>
 
 <section>
   <h2>Heroes</h2>
   <ul>
-    <% @heroes.each do |hero| %>
+    <% team.heroes.each do |hero| %>
       <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
     <% end %>
   </ul>
 </section>
 
 <section>
-  <h2>Heroes</h2>
+  <h2>Villains</h2>
   <ul>
-    <% @villains.each do |hero| %>
+    <% team.villains.each do |hero| %>
       <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
     <% end %>
   </ul>
@@ -26,14 +26,14 @@
 
 <section>
   <h2>Pitch</h2><br>
-  <%= @team.pitch %>
+  <%= team.pitch %>
 </section>
 
 <section>
   <h2>Votes</h2>
 
-  <p>Votes for this team: <%= @votes %></p>
-  <p>Total votes in match: <%= @match_votes.values.sum %></p>
+  <p>Votes for this team: <%= team.votes.count %></p>
+  <p>Total votes in match: <%= match_votes.values.sum %></p>
 </section>
 
 
