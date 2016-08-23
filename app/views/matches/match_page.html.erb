@@ -7,14 +7,18 @@ A partial to create a team if there are still spaces in the match
 
 Should this have two partials, one for players and one for viewers?
 
+<h1><%= @match.name %></h1>
+<p><strong>Stakes:</strong> <%= @match.stakes %></p>
+
+<% if @match.phase = 1 %>
+  <%# this needs to have a create team with this match button. %>
+<%end%>
+
 <% @teams.each do |team| %>
   <%= render partial: "/teams/team_block_view", locals: {team: team, match_votes: team.match.votes} %>
 <%end%>
 
+<% if @match.phase = 2 && Vote.find(user_id: @user.id).nil? == true %>
+  <%= form_for @single_vote do |f| %>
+  
 
-# YOU CAN GET CHANGED NOW BECAUSE EACH TEAM DISPLAYS ITS VOTES AND TOTAL VOTES.
-<% @votes.each do |key, value| %>
-  <p><%= Team.find(key).name %> votes: <%= value %></p>
-<%end%>
-
-<p><em>Total votes: <%= @votes.values.sum %>

@@ -3,5 +3,6 @@
   <%= f.text_field :name %><br><br>
   <%= f.label "Match Stakes" %>
   <%= f.text_field :stakes %><br><br>
+  <%= f.hidden_field :phase, value: 1 %>
   <%= f.submit "Create" %>
 <% end %>

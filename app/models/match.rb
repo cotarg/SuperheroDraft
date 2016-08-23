@@ -17,9 +17,26 @@ class Match < ActiveRecord::Base
     return votes
   end
 
+  def self.check_team_membership(id)
+    if Team.where(match_id: id).count >= 4
+      return false
+    else 
+      return id
+    end
+  end
+
+  def self.find_match(match_seeds)
+    index = rand(0..(match_seeds.length - 1))
+    match = match_seeds[index]
+
+    if Match.check_team_membership(match) == false
+      Match.find_match(match_seeds)
+    else
+      return match
+    end
+  end
+
 end
 
 # consider extracting to individual team calculations, 
 # and having match assemble them as a single object.
-
-# 

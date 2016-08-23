@@ -26,8 +26,10 @@ class MatchesController < ApplicationController
   end
 
   def show
+    @user = User.find_by(uid: session[:user_id])
     @match = Match.find(params[:id])
     @teams = @match.teams
+    @single_vote = Vote.new
     @votes = @match.votes
     render :match_page
   end
@@ -41,7 +43,7 @@ class MatchesController < ApplicationController
   private
 
   def match_create_params
-    params.permit(match: [:name, :stakes])
+    params.permit(match: [:name, :stakes, :phase])
   end
 
 end
