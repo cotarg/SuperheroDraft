@@ -14,6 +14,7 @@ class MatchesController < ApplicationController
   end
 
   def create
+    @user = User.find_by(uid: session[:user_id])
     @match = Match.create(match_create_params[:match])
     @match_id = @match.id
     redirect_to match_path(@match_id)

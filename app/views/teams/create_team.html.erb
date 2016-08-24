@@ -1,0 +1,13 @@
+<%= form_for @team do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %><br><br>
+
+  <%= f.label :cover_url %>
+  <%= f.text_field :cover_url %><br><br>
+
+  <%= f.hidden_field :user_id, :value => @user.id%>
+
+  <%= submit_tag("Create") %>
+
+<% end %>

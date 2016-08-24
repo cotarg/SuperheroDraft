@@ -8,13 +8,15 @@ class TeamsController < ApplicationController
   end
 
   def new
+    @user = User.find_by(uid: session[:user_id])
     @team = Team.new
     render :create_team
   end
 
   def create
+    @user = User.find_by(uid: session[:user_id])
     @team = Team.create(team_create_params[:team])
-    redirect_to team_path
+    redirect_to team_path(@team.id)
   end
 
   def edit
@@ -33,7 +35,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @team.update(team_create_params[:team])
-    redirect_to team_path
+    redirect_to 
   end
 
   def delete
@@ -41,6 +43,12 @@ class TeamsController < ApplicationController
     if params[:id] == true 
       redirect_to root_path
     end 
+  end
+
+  private
+
+  def team_create_params
+    params.permit(team: [:user_id, :name, :cover_url])
   end
 
 end
