@@ -34,19 +34,25 @@ class Hero
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
     search = Rails.cache.fetch("comicvine_character/#{char_name_string}", expires_in: 3.days) do
-      ComicVine::API.search('characters', char_name_string)
+      search = ComicVine::API.search('character', char_name_string)
+      heroes = []
+      search.each do |char|
+        heroes << char
+      end
     end
-    heroes = []
-    search.each do |char|
-      heroes << char
-    end
+
+
+
     return heroes
   end
 
   def self.find_char(character_id_string)
-    Rails.cache.fetch("comicvine_character/#{character_id_string}", expires_in: 3.days) do
-      ComicVine::API.character(character_id_string)
+    # API now requires single character searches to preface the id with "4005-"
+    search = Rails.cache.fetch("comicvine_character/#{character_id_string}", expires_in: 3.days) do
+      ComicVine::API.character("4005-#{character_id_string}")
     end
+    # gem doesn't actually give you results unless you fetch them.
+    search.fetch
   end
 
   def self.group(array_of_inputs)

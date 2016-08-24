@@ -1,7 +1,10 @@
 class HeroesController < ApplicationController
 
   def index
-    @heroes = Hero.find_all(params[:search])
+    if params[:q]
+      @heroes = Hero.find_all(params[:q])
+    end
+    render :search
   end
 
   def new
@@ -14,6 +17,9 @@ class HeroesController < ApplicationController
   end
 
   def show
+    @heroes = Hero.find_all(params[:search])
+
+    render :hero_options
   end
 
   def update
