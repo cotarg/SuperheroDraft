@@ -1,6 +1,7 @@
 class MatchesController < ApplicationController
 
   def index
+    @user = User.find_by(uid: session[:user_id])
     @open_matches = Match.where(phase: 1)
     @voting_matches = Match.where(phase: 2)
     @closed_matches = Match.where(phase: 3)
@@ -9,6 +10,7 @@ class MatchesController < ApplicationController
   end
 
   def new
+    @user = User.find_by(uid: session[:user_id])
     @match = Match.new
     render :create_match
   end
@@ -21,8 +23,11 @@ class MatchesController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(uid: session[:user_id])
     @match = Match.find(params[:id])
-    @user = Person.new
+    if params[:q]
+      @heroes = Hero.find_all(params[:q])
+    end
     render :edit
   end
 

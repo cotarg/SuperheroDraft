@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root 'application#index'
 
   resources :users
-  resources :matches
+  resources :matches do
+    resources :teams, :only => [:new, :create, :edit]
+  end
   resources :heroes
-  resources :teams
+  resources :teams, :only => [:index, :show]
 
   get "/auth/:provider/callback" => "sessions#create"
 end

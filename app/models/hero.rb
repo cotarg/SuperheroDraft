@@ -35,14 +35,12 @@ class Hero
     # this will utilize comic_vine to find hero and deliver for normalizing
     search = Rails.cache.fetch("comicvine_character/#{char_name_string}", expires_in: 3.days) do
       search = ComicVine::API.search('character', char_name_string)
-      heroes = []
-      search.each do |char|
-        heroes << char
-      end
     end
-
-
-
+    heroes = []
+    search.each do |char|
+      heroes << char
+    end
+    
     return heroes
   end
 

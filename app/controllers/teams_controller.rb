@@ -9,6 +9,7 @@ class TeamsController < ApplicationController
 
   def new
     @user = User.find_by(uid: session[:user_id])
+    @match = Match.find_by(id: params[:match_id])
     @team = Team.new
     render :create_team
   end
@@ -16,11 +17,15 @@ class TeamsController < ApplicationController
   def create
     @user = User.find_by(uid: session[:user_id])
     @team = Team.create(team_create_params[:team])
-    redirect_to team_path(@team.id)
+    @match = Match.find(@team.match_id)
+    redirect_to edit_match_team_path(@team.match_id, @team.id)
   end
 
   def edit
     @team = Team.find(params[:id])
+    if params[:q]
+      @heroes = Hero.find_all(params[:q])
+    end
     render :edit
   end
 
@@ -48,7 +53,7 @@ class TeamsController < ApplicationController
   private
 
   def team_create_params
-    params.permit(team: [:user_id, :name, :cover_url])
+    params.permit(team: [:user_id, :name, :match_id, :cover_url])
   end
 
 end

@@ -18,7 +18,6 @@ Should this have two partials, one for players and one for viewers?
   <%= render partial: "/teams/team_block_view", locals: {team: team, match_votes: team.match.votes} %>
 <%end%>
 
-<% if @match.phase = 2 && Vote.find(user_id: @user.id).nil? == true %>
-  <%= form_for @single_vote do |f| %>
+
   
 

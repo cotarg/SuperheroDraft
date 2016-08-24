@@ -1,0 +1,11 @@
+<%= form_tag("/heroes", method: "get") do %>
+  <%= label_tag(:q, "Search for:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if @heroes.nil? == false %>
+  <% @heroes.each do |hero| %>
+    <%= hero.name %><br>
+  <%end%>
+<%end%>

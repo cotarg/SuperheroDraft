@@ -7,6 +7,7 @@
   <%= f.text_field :cover_url %><br><br>
 
   <%= f.hidden_field :user_id, :value => @user.id%>
+  <%= f.hidden_field :match_id, :value => params[:match_id] %>
 
   <%= submit_tag("Create") %>
 
