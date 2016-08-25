@@ -23,6 +23,7 @@ class TeamsController < ApplicationController
 
   def edit
     @team = Team.find(params[:id])
+    @match = Match.find(@team.match_id)
     if params[:q]
       @heroes = Hero.find_all(params[:q])
     end
@@ -30,7 +31,8 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])    
+    @team = Team.find(params[:id]) 
+    @match = Match.find(@team.match_id)   
     @votes = Vote.where(team_id: @team.id).count
     @match_votes = @team.match.votes
 
@@ -39,7 +41,7 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @team.update(team_create_params[:team])
+    @team.update(team_update_params[:team])
     redirect_to 
   end
 
@@ -54,6 +56,10 @@ class TeamsController < ApplicationController
 
   def team_create_params
     params.permit(team: [:user_id, :name, :match_id, :cover_url])
+  end
+
+  def team_update_params
+    params.permit(team: [:hero_one, :hero_two, :hero_three, :hero_four, :hero_five, :hero_six, :villain_one, :villain_two, :villain_three, :villain_four, :cover_url, :pitch])
   end
 
 end
