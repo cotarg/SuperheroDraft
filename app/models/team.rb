@@ -28,6 +28,4 @@ class Team < ActiveRecord::Base
       end
     end
   end
-
-
 end

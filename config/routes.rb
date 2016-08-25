@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :matches do
-    resources :teams, :only => [:new, :create, :edit]
+    resources :teams, :only => [:new, :create, :edit, :update]
   end
   resources :heroes
   resources :teams, :only => [:index, :show]

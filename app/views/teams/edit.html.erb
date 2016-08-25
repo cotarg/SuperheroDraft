@@ -1,11 +1,16 @@
-<%= form_tag("/matches/#{:match_id}/teams/#{:id}", method: "get") do %>
+<%= form_tag("/matches/#{@match.id}/teams/#{@team.id}/edit", method: "get") do %>
   <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
 
 <% if @heroes.nil? == false %>
-  <% @heroes.each do |hero| %>
-    <%= hero.name %><br>
+  <%= form_for @team, url: {action: "update"}, html: {class: "add_team"} do |f| %>
+    <% @heroes.each do |hero| %>
+      <%= radio_button_tag(:hero_one, hero.id) %>
+      <%# hero.image %><%= label_tag(:hero_one, hero.name) %><br>
+    <%end%>
+    <%= submit_tag("Add Character to your Team") %>
   <%end%>
 <%end%>
+
