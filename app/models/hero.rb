@@ -47,7 +47,7 @@ class Hero
   def self.find_char(character_id_string)
     # API now requires single character searches to preface the id with "4005-"
     search = Rails.cache.fetch("comicvine_character/#{character_id_string}", expires_in: 3.days) do
-      ComicVine::API.character("4005-#{character_id_string}")
+      ComicVine::API.character("#{character_id_string}")
     end
     # gem doesn't actually give you results unless you fetch them.
     search.fetch
@@ -62,7 +62,6 @@ class Hero
     return hero_array
   end
 
-  private
 
   def self.image_setter(image_url, key)
     if image_url != nil

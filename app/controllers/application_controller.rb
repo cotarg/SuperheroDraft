@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @user = current_user
+    @matches = Match.where("created_at < ?", 5.days.ago)
     render :index
   end
 

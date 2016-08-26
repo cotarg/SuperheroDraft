@@ -1,0 +1,5 @@
+<h1><%= link_to match.name, match_path(match.id) %></h1>
+<strong>Stakes:</strong> <%= match.stakes %><br>
+<% match.teams.each do |team| %>
+  <em>Team:</em> <%= team.name %>
+<%end%>

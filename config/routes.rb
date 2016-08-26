@@ -3,14 +3,16 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'application#index'
+  root 'matches#index'
 
-  resources :users
-  resources :matches do
-    resources :teams, :only => [:new, :create, :edit, :update]
-  end
-  resources :heroes
-  resources :teams, :only => [:index, :show]
+ 
+    resources :users
+    resources :matches do
+      resources :teams, :only => [:new, :create, :edit, :update]
+    end
+    resources :heroes
+    resources :teams, :only => [:index, :show]
+
 
   get "/auth/:provider/callback" => "sessions#create"
 end

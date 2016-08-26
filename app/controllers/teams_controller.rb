@@ -41,8 +41,8 @@ class TeamsController < ApplicationController
 
   def update
     @team = Team.find(params[:id])
-    @team.update(team_update_params[:team])
-    redirect_to 
+    @team.set_char(team_update_params[:type], team_update_params[:character_id])
+    redirect_to edit_match_team_path(@team.match_id, @team.id)
   end
 
   def delete
@@ -59,7 +59,7 @@ class TeamsController < ApplicationController
   end
 
   def team_update_params
-    params.permit(team: [:hero_one, :hero_two, :hero_three, :hero_four, :hero_five, :hero_six, :villain_one, :villain_two, :villain_three, :villain_four, :cover_url, :pitch])
+    params.permit([:type, :character_id])
   end
 
 end

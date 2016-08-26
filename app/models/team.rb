@@ -3,6 +3,9 @@ class Team < ActiveRecord::Base
   belongs_to :match
   has_many :votes
 
+  MAX_HERO = 6
+  MAX_VILLAIN = 4
+
   def heroes
     Hero.group([hero_one, hero_two, hero_three, hero_four, hero_five, hero_six])
   end
@@ -11,21 +14,15 @@ class Team < ActiveRecord::Base
     Hero.group([villain_one, villain_two, villain_three, villain_four])
   end
 
-  def next_hero
-    heroes = ["one", "two", "three", "four", "five", "six"]
-    heroes.each do |hero|
-      if self.send("hero_#{hero}").nil?
-        return self.send("hero_#{hero}")
+  def set_char(type, char_id)
+    numbers = ["one", "two", "three", "four", "five", "six"]
+    Team.const_get("MAX_#{type.upcase}").times do |i|
+      attribute = "#{type}_#{numbers[i]}"
+      if self.send(attribute).nil?
+        return update(attribute => char_id)
       end
     end
+    return false
   end
 
-  def next_villain
-    villains = ["one", "two", "three", "four"]
-    villains.each do |villain|
-      if self.send("villain_#{villain}").nil?
-        return self.send("villain_#{villain}")
-      end
-    end
-  end
 end
