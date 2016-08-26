@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  skip_before_action :require_login
 
   def index
     # (Should show all of a user's teams)

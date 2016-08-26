@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  skip_before_action :require_login
 
   def new
     @vote = Vote.new

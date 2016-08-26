@@ -1,10 +1,9 @@
 class MatchesController < ApplicationController
+  skip_before_action :require_login, only: :index
 
   def index
     @user = User.find_by(uid: session[:user_id])
     @open_matches = Match.where(phase: 1)
-    @voting_matches = Match.where(phase: 2)
-    @closed_matches = Match.where(phase: 3)
 
     render :index
   end

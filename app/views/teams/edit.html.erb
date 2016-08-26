@@ -19,11 +19,8 @@
   <%end%>
 <%end%>
 
-<%# MUST ADD HERO FIRST, go to show page, from show page, add villain. %>
-<%# OR MAYBE JUST A LINK ON EDIT PAGE. SEE HOW LAZY YOU FEEL AT MIDNIGHT. %>
-
-
->> edit_match_team_path
-=> "/matches/206/teams/766/edit"
->> edit_match_team_path(type: :villain)
-=> "/matches/206/teams/766/edit?type=villain"
+<% if !params[:type] || params[:type] == "hero" %>
+  <%= link_to "Add a villain instead!", edit_match_team_path(@team.match_id, @team.id, :type => :villain) %>
+<% else %>
+  <%= link_to "Add a hero instead!", edit_match_team_path(@team.match_id, @team.id, :type => :hero) %>
+<%end%>

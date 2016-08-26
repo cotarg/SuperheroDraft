@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :matches, through: :match_membership
   has_many :teams
 
-    def self.find_or_create_by_omniauth(auth_hash)
+  def self.find_or_create_by_omniauth(auth_hash)
     # Find or create a user
     user = self.find_by(provider: auth_hash["provider"], uid: auth_hash["info"]["id"])
     
@@ -23,6 +23,4 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-
 end

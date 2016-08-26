@@ -19,7 +19,7 @@
       <% end %>
 
       <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> Superhero Draft
-      <%# link_to "Logout", logout_path, method: "delete", :class => "btn btn-primary btn-sm" %>
+      <%= link_to "Logout", logout_path, method: "delete", :class => "btn btn-primary btn-sm" %>
     
       <%=link_to "Start a Match", new_match_path%>
 
