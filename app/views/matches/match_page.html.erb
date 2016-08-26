@@ -3,15 +3,11 @@ This page needs to contain:
 A list of all participating teams.
   * Display teams with vote buttons if in voting phase.
 
-A partial to create a team if there are still spaces in the match 
-
-Should this have two partials, one for players and one for viewers?
-
 <h1><%= @match.name %></h1>
 <p><strong>Stakes:</strong> <%= @match.stakes %></p>
 
-<% if @match.phase = 1 %>
-  <%# this needs to have a create team with this match button. %>
+<% if @match.teams.count <= 3 %>
+  <%= link_to "Add a team to this match!", new_match_team_path(@match.id) %>
 <%end%>
 
 <% @teams.each do |team| %>

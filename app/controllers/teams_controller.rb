@@ -2,9 +2,8 @@ class TeamsController < ApplicationController
   skip_before_action :require_login
 
   def index
-    # (Should show all of a user's teams)
-    # @teams = Team.where(user_id: params[]) || Team.new() #(This works, and is now the format for these.)
-    @teams = Team.where(user_id: 12) || Team.new() #(This works, and is now the format for these.)
+    @user = User.find_by(uid: session[:user_id])
+    @teams = Team.where(user_id: @user.id) || Team.new() #(This works, and is now the format for these.)
     render :index
   end
 
@@ -43,7 +42,7 @@ class TeamsController < ApplicationController
   def update
     @team = Team.find(params[:id])
     @team.set_char(team_update_params[:type], team_update_params[:character_id])
-    redirect_to edit_match_team_path(@team.match_id, @team.id)
+    redirect_to edit_match_team_path(@team.match_id, @team.id, :type => params[:type])
   end
 
   def delete

@@ -56,8 +56,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
-    comic_vine (0.1.4)
-      multi_json
     concurrent-ruby (1.0.2)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -241,7 +239,6 @@ DEPENDENCIES
   better_errors
   byebug
   coffee-rails (~> 4.1.0)
-  comic_vine
   dalli
   dotenv-rails
   httparty

@@ -25,17 +25,6 @@ class Match < ActiveRecord::Base
     end
   end
 
-  def self.find_match(match_seeds)
-    index = rand(0..(match_seeds.length - 1))
-    match = match_seeds[index]
-
-    if Match.check_team_membership(match) == false
-      Match.find_match(match_seeds)
-    else
-      return match
-    end
-  end
-
 end
 
 # consider extracting to individual team calculations, 
