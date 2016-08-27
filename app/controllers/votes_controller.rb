@@ -9,13 +9,13 @@ class VotesController < ApplicationController
   def create
     @user = User.find_by(uid: session[:user_id])
     @vote = Vote.create(vote_create_params)
-    redirect_to # current match? matches page?
+    redirect_to match_path(@vote.team.match_id)
   end
 
   private
 
   def vote_create_params
-    params.permit(vote: [:team, :user])
+    params.permit(:team_id, :user_id)
   end
 
 end

@@ -15,7 +15,7 @@
 </section>
 
 <% if Vote.find_by(user_id: @user.id).nil? %>
-  <%= form_for @single_vote, :url => url_for(:controller => 'votes_controller', :action => 'create') do |f| %>
+  <%= form_for @single_vote, url: votes_path do |f| %>
     <% @teams.each do |team| %>
       <%= hidden_field_tag :user_id, @user.id %>
       <%= radio_button_tag(:team_id, team["id"]) %>

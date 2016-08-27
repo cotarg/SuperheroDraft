@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     resources :heroes
     resources :teams, :only => [:index, :show]
+    resources :votes, :only => [:new, :create]
 
 
   get "/auth/:provider/callback" => "sessions#create"
