@@ -24,7 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'rails_12factor', group: :production
 # gem 'comic_vine'
-gem 'rspotify'
+# gem 'rspotify'
 gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'rest-client'
