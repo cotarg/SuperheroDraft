@@ -1,20 +1,26 @@
-This page needs to contain:
-
-A list of all participating teams.
-  * Display teams with vote buttons if in voting phase.
-
 <h1><%= @match.name %></h1>
 <p><strong>Stakes:</strong> <%= @match.stakes %></p>
 
+
+<section>
 <% if @match.teams.count <= 3 %>
   <%= link_to "Add a team to this match!", new_match_team_path(@match.id) %>
 <%end%>
+</section>
 
+<section>
 <% @teams.each do |team| %>
   <%= render partial: "/teams/team_block_view", locals: {team: team, match_votes: team.match.votes} %>
 <%end%>
+</section>
 
-
-
-  
-
+<% if Vote.find_by(user_id: @user.id).nil? %>
+  <%= form_for @single_vote, :url => url_for(:controller => 'votes_controller', :action => 'create') do |f| %>
+    <% @teams.each do |team| %>
+      <%= hidden_field_tag :user_id, @user.id %>
+      <%= radio_button_tag(:team_id, team["id"]) %>
+      <%= label_tag(:team_id, team["name"]) %><br>
+    <%end%>
+    <%= f.submit "Vote!", data: {confirm: 'You have voted on this match. Thank you!'} %>
+  <%end%>
+<%end%>

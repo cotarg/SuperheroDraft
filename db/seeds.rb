@@ -18,7 +18,7 @@ def find_match(match_seeds)
   else 
     match = match_seeds[0]
     if Match.check_team_membership(match.id) == false
-      Match.find(match_seeds[1..-1])
+      find_match(match_seeds[1..-1])
     else
       return match
     end
@@ -26,11 +26,11 @@ def find_match(match_seeds)
 end
 
 # matches don't require anything except an ID because it functions as a join. 180 is an arbitrary number.
-200.times do
+30.times do
   Match.create
 end
 
-match_seeds = Match.all.shuffle
+match_seeds = Match.all.shuffle.to_a
 
 users = CSV.read('seed_csvs/users.csv', :headers => true)
 user_hash = {}
@@ -40,7 +40,7 @@ users.each do |row|
   user_hash[:name] = row[2].to_s
   user_hash[:image] = row[3].to_s
   user = User.create(user_hash)
-  rand(6).times do
+  rand(3).times do
     team_hash = {}
 
     team_hash[:user_id] = user.id
@@ -59,14 +59,14 @@ users.each do |row|
     team_hash[:playlist_url] = "spotify link"
     team_hash[:pitch] = "coming soon"
     team_hash[:name] = "team name"
-    team_hash[:match_id] = find_match(match_seeds)
+    team_hash[:match_id] = rand(1..30)
     Team.create(team_hash)
   end
 end
 
 
 # 5000 is also an arbitrary number. This will also have to change. :)
-5000.times do 
+1000.times do 
   user_offset = rand(User.count)
   team_offset = rand(Team.count)
   

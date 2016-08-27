@@ -1,9 +1,5 @@
-# require 'marvelite' (removed for now as going with a CV only solution)
-# require 'comic_vine'
 require 'httparty'
 require 'dalli'
-# ComicVine::API.key = Rails.application.secrets.comic_vine_key
-# api_key = Rails.application.secrets.comic_vine_key
 
 class Hero
   attr_reader :name, :aliases, :description, :image_url, :id_obj, :gender
@@ -36,25 +32,19 @@ class Hero
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
     search = Rails.cache.fetch("comicvine_character/#{char_name_string}", expires_in: 3.days) do
-      # ComicVine::API.search('character', char_name_string, {:field_list => :name})
-      HTTParty.get("http://comicvine.gamespot.com/api/search/?query=#{char_name_string}&format=json&api_key=#{ENV["COMICVINE_PRIVATE"]}&field_list=name,id")
+      HTTParty.get("http://comicvine.gamespot.com/api/search/?query=#{char_name_string}&format=json&api_key=#{ENV["COMICVINE_PRIVATE"]}&resources=character&field_list=name,id,image")
     end
     heroes = []
     search["results"].each do |char|
       heroes << char
     end
-    
     return heroes
   end
 
   def self.find_char(character_id_string)
-    # API now requires single character searches to preface the id with "4005-"
     search = Rails.cache.fetch("comicvine_character/#{character_id_string}", expires_in: 3.days) do
-      # ComicVine::API.character("#{character_id_string}")
       HTTParty.get("http://comicvine.gamespot.com/api/character/4005-#{character_id_string}/?api_key=#{ENV["COMICVINE_PRIVATE"]}&field_list=aliases,deck,name,gender,id,image&format=json")
     end
-    # gem doesn't actually give you results unless you fetch them.
-    # search.fetch
   end
 
   def self.group(array_of_inputs)
