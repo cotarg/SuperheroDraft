@@ -1,3 +1,10 @@
-<% @open_matches.each do |match| %>
-  <div><%= render partial: "match_display", locals: {match: match} %></div>
-<%end%>
+<div class="mdl-grid">
+  <section>
+    <% @matches.each do |match| %>
+      <div><%= render partial: "match_display", locals: {match: match} %></div><br><br>
+    <%end%>
+  </section>
+</div>
+
+
+

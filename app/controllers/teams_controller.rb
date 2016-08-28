@@ -22,6 +22,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(uid: session[:user_id])
     @team = Team.find(params[:id])
     @match = Match.find(@team.match_id)
     if params[:q]
@@ -31,6 +32,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @user = User.find_by(uid: session[:user_id]) 
     @team = Team.find(params[:id]) 
     @match = Match.find(@team.match_id)   
     @votes = Vote.where(team_id: @team.id).count
@@ -55,7 +57,7 @@ class TeamsController < ApplicationController
   private
 
   def team_create_params
-    params.permit(team: [:user_id, :name, :match_id, :cover_url])
+    params.permit(team: [:user_id, :name, :match_id, :cover_url, :pitch])
   end
 
   def team_update_params

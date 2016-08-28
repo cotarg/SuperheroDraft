@@ -3,7 +3,7 @@ class MatchesController < ApplicationController
 
   def index
     @user = User.find_by(uid: session[:user_id])
-    @open_matches = Match.where(phase: 1)
+    @matches = Match.limit(12).order('id desc')
 
     render :index
   end

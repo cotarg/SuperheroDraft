@@ -6,9 +6,16 @@
   <%= f.label :cover_url %>
   <%= f.text_field :cover_url %><br><br>
 
+  <%= f.label :pitch %>
+  <%= f.text_area :pitch %><br><br>
+
   <%= f.hidden_field :user_id, :value => @user.id%>
   <%= f.hidden_field :match_id, :value => params[:match_id] %>
 
-  <%= submit_tag("Create") %>
+  <%= submit_tag "Create", :class => 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent' %>
 
 <% end %>
+
+
+ <input class="mdl-textfield__input" type="text" id="sample1">
+    <label class="mdl-textfield__label" for="sample1">Text...</label>

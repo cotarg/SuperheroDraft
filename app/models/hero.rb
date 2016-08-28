@@ -50,7 +50,7 @@ class Hero
   def self.group(array_of_inputs)
     hero_array = []
     array_of_inputs.each do |input|
-      hero_array.push(Hero.normalize(Hero.find_char(input)))
+      hero_array.push(Hero.normalize(Hero.find_char(input))) if !input.nil?
     end
     
     return hero_array

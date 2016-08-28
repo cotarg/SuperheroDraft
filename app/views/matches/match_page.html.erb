@@ -1,12 +1,31 @@
-<h1><%= @match.name %></h1>
-<p><strong>Stakes:</strong> <%= @match.stakes %></p>
+
+<h2 class="left-pad"><%= @match.name %></h2>
+<h4 class="left-pad"><strong>Stakes:</strong> <%= @match.stakes %></h4>
 
 
-<section>
-<% if @match.teams.count <= 3 %>
-  <%= link_to "Add a team to this match!", new_match_team_path(@match.id) %>
-<%end%>
-</section>
+<div class="mdl-grid">
+  <section class="mdl-cell mdl-cell--8-col">
+  <% if @match.teams.count <= 3 %>
+    <%= link_to "Add a team to this match!", new_match_team_path(@match.id), :class => "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+  <%end%>
+  </section>
+
+  <section class="mdl-cell mdl-cell--4-col">
+  <% if Vote.find_by(user_id: @user.id).nil? %>
+    <%= form_for @single_vote, url: votes_path do |f| %>
+      <%= hidden_field_tag :user_id, @user.id %>
+      <% @teams.each do |team| %>
+        <%= radio_button_tag(:team_id, team["id"]) %>
+        <%= label_tag(:team_id, team["name"]) %><br>
+      <%end%>
+      <%= f.submit "Vote!", data: {confirm: 'You have voted on this match. Thank you!'}, :class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+    <%end%>
+    <%else%>
+    <p class="mdl-button  mdl-button--raised mdl-button--accent">You already voted on this match!</p>
+  <%end%>
+  </section>
+</div>
+
 
 <section>
 <% @teams.each do |team| %>
@@ -14,13 +33,3 @@
 <%end%>
 </section>
 
-<% if Vote.find_by(user_id: @user.id).nil? %>
-  <%= form_for @single_vote, url: votes_path do |f| %>
-    <% @teams.each do |team| %>
-      <%= hidden_field_tag :user_id, @user.id %>
-      <%= radio_button_tag(:team_id, team["id"]) %>
-      <%= label_tag(:team_id, team["name"]) %><br>
-    <%end%>
-    <%= f.submit "Vote!", data: {confirm: 'You have voted on this match. Thank you!'} %>
-  <%end%>
-<%end%>

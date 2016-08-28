@@ -1,34 +1,58 @@
 
+<div class="mdl-grid">
+<h3 class="mdl-cell mdl-cell--6-col"><%= team.name %></h3><br>
+</div>
 
-<h1><%= team.name %></h1><br>
+<div class="mdl-grid">
 
-<section>
-  <%= image_tag(team.cover_url) %>
+
+
+
+<section class="mdl-cell mdl-cell--8-col demo-card-wide mdl-card mdl-shadow--2dp">
+  <section class="mdl-grid">
+    <section class="mdl-cell mdl-cell--4-col">
+      <%= image_tag(team.cover_url) %>
+    </section>
+    <h4 class="mdl-cell mdl-cell--2-col mdl-card__title-text">Pitch</h4>
+    <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><%= team.pitch %></p>
+  <br>
+  <section class="mdl-cell mdl-cell--6-col">
+  <h4>Heroes</h4>
+    <ul>
+      <% team.heroes.each do |hero| %>
+        <li><%= image_tag hero.image_url, :width => "75" %> <%= "#{hero.name}"%></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="mdl-cell mdl-cell--6-col">
+    <h4>Villains</h4>
+    <ul>
+      <% team.villains.each do |hero| %>
+        <li><%= image_tag hero.image_url, :width => "75" %> <%= "#{hero.name}" %></li>
+      <% end %>
+    </ul>
+  </section>
+</section>
 </section>
 
-<section>
-  <h2>Heroes</h2>
-  <ul>
-    <% team.heroes.each do |hero| %>
-      <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
-    <% end %>
-  </ul>
+<section class="mdl-cell mdl-cell--4-col demo-card-wide mdl-card mdl-shadow--2dp">
+  <section class="mdl-grid">
+    <section class="mdl-cell mdl-cell--4-col">
+      <%= image_tag("logos/vote.png", :width => "75") %>
+    </section>
+  <h4 class="mdl-cell mdl-cell--6-col mdl-card__title-text">Votes:</h4>
+  <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><strong >Votes for this team:</strong> <%= team.votes.count %></p>
+  <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><strong><em>Total Votes in Match:</em></strong> <%= match_votes.count %></p>
 </section>
 
-<section>
-  <h2>Villains</h2>
-  <ul>
-    <% team.villains.each do |hero| %>
-      <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
-    <% end %>
-  </ul>
-</section>
+</div>
 
-<section>
-  <h2>Pitch</h2><br>
-  <%= team.pitch %>
-</section>
 
-<p><em>Votes for this team:</em> <%= team.votes.count %></p>
 
-If match closed, graphic if this team was the winner.
+
+
+
+
+
+<%# If match closed, graphic if this team was the winner. %>

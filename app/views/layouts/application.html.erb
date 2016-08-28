@@ -18,17 +18,19 @@
         <%= link_to image_tag("logos/takeout-tunes-logo.png", :class => "img-rounded", :width => "100"), "https://open.spotify.com/user/#{@user.uid}" %>
       <% end %>
 
-      <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> Superhero Draft
-      <%= link_to "Logout", logout_path, method: "delete", :class => "btn btn-primary btn-sm" %>
-    
-      <%=link_to "Start a Match", new_match_path%>
+      <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> Superhero Draft<br>
+      
+      <%=link_to "Start a Match", new_match_path, :class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+      <%= link_to "Logout", logout_path, method: "delete", :class => "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
 
     <%end %>
   </header>
 <br><br>
 <%= yield %>
 <br><br>
-<footer>This app strictly for fun and bar bets. All comic book data provided by <a href="http://comicvine.gamespot.com/" alt="ComicVine Website" title="ComicVine">ComicVine</a>. Generic Hero Icon courtesy <%= link_to "Juan Pablo Bravo/Noun Project", "https://thenounproject.com/bravo/" %>, Comic Book Cover icon courtesy <%= link_to "Carlo Cariño/The Noun Project", "https://thenounproject.com/carlocarino/" %>.</footer>
+<footer>This app strictly for fun and bar bets. <br>
+  All comic book data provided by <%= link_to "Comic Vine", "http://comicvine.gamespot.com/" %>.<br>
+   Generic Hero Icon courtesy <%= link_to "Juan Pablo Bravo/Noun Project", "https://thenounproject.com/bravo/" %>.<br> Comic Book Cover icon courtesy <%= link_to "Carlo Cariño/The Noun Project", "https://thenounproject.com/carlocarino/" %>.<br> User icon courtesy <%= link_to "Luis Rodrigues/The Noun Project", "https://thenounproject.com/lmf.rodrigues/" %>.</footer>
 
 </body>
 </html>

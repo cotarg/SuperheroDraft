@@ -14,3 +14,38 @@
  *= require_self
  *= require material
  */
+
+ /********** GLOBAL **********/
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 1rem;
+    max-width: 100%;
+    background-color: #dedede;
+  }
+
+  header {
+    margin: 1rem;
+    background-color: #FFFFFF;
+  }
+
+  section {
+    margin: 1rem;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  .left-pad {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .left-pad-2 {
+    padding: 1.5rem;
+    margin: 1.5rem;
+  }
