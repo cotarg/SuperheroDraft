@@ -114,6 +114,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    netrc (0.7.9)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
@@ -176,6 +177,11 @@ GEM
       json (~> 1.4)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    rest_client (1.8.3)
+      netrc (~> 0.7.7)
+    rspotify (1.10.0)
+      omniauth-oauth2 (~> 1.1)
+      rest_client (~> 1.8)
     ruby-progressbar (1.8.1)
     safe_yaml (1.0.4)
     sass (3.4.22)
@@ -250,6 +256,7 @@ DEPENDENCIES
   rails (= 4.2.6)
   rails_12factor
   rest-client
+  rspotify
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   simplecov
