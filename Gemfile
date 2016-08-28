@@ -29,6 +29,7 @@ gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'rest-client'
 gem 'dalli'
+gem 'material_design_lite-rails', '~> 1.2'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
