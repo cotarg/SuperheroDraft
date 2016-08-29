@@ -1,9 +1,7 @@
 <div class="mdl-grid">
-  <section>
     <% @matches.each do |match| %>
-      <div><%= render partial: "match_display", locals: {match: match} %></div><br><br>
+      <%= render partial: "match_display", locals: {match: match} %><br><br>
     <%end%>
-  </section>
 </div>
 
 

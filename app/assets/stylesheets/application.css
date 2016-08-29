@@ -38,6 +38,8 @@
 
   footer {
     text-align: center;
+    background-color: #fff;
+    margin: 1rem;
   }
 
   .left-pad {

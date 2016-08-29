@@ -1,5 +1,14 @@
 
 <h1>Add a <%= params[:type] || "hero" %> to your team!</h1>
+<section>
+  <p>
+    <% if !params[:type] || params[:type] == "hero" %>
+      <%= link_to "Add a villain instead!", edit_match_team_path(@team.match_id, @team.id, :type => :villain), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" %>
+    <% else %>
+      <%= link_to "Add a hero instead!", edit_match_team_path(@team.match_id, @team.id, :type => :hero), class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" %>
+    <%end%>
+  </p>
+</section>
 
 <section>
 <%= form_tag("/matches/#{@match.id}/teams/#{@team.id}/edit", method: "get") do %>
@@ -10,25 +19,27 @@
 <% end %>
 </section>
 
-<section>
+<div>
 <% if @heroes.nil? == false %>
-  <%= form_for @team, url: {action: "update"}, html: {class: "add_team"} do |f| %>
+  <%= form_for @team, url: {action: "update"}, html: {class: "blah" } do |f| %>
+  <div class="mdl-grid">
     <%= hidden_field_tag :type, params[:type] || :hero %>
     <% @heroes.each do |hero| %>
-      <%= radio_button_tag(:character_id, hero["id"]) %>
-      <%= label_tag(:character_id, hero["name"]) %><br>
+      <div class="mdl-cell mdl-cell--1-col">
+        <%= radio_button_tag(:character_id, hero["id"]) %>
+        <%= label_tag(:character_id, hero["name"]) %>
+        <% if !hero["image"].nil? %>
+          <%= image_tag hero["image"]["icon_url"] %><br>
+        <% else %>
+          <%= image_tag "default_icons/hero.jpg"%><br>
+        <%end%>
+      </div>
     <%end%>
-    <%= f.submit "Add Character to your Team", data: { confirm: 'You have just added #{Hero.find(hero.id).name} to your team.' } %>
+  </div>
+  <div class="mdl-grid">
+    <%= f.submit "Add Character to your Team", data: { confirm: 'You have just added #{Hero.find(hero["id"]).name} to your team.' },  class: "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent mdl-cell mdl-cell--4-col " %>
+  </div>
   <%end%>
 <%end%>
-</section>
+</div>
 
-<section>
-  <p>
-    <% if !params[:type] || params[:type] == "hero" %>
-      <%= link_to "Add a villain instead!", edit_match_team_path(@team.match_id, @team.id, :type => :villain) %>
-    <% else %>
-      <%= link_to "Add a hero instead!", edit_match_team_path(@team.match_id, @team.id, :type => :hero) %>
-    <%end%>
-  </p>
-</section>

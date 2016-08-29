@@ -1,11 +1,13 @@
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title">
-    <h2 class="mdl-card__title-text"><%= link_to match.name, match_path(match.id) %></h2>
+<div class="mdl-cell mdl-cell--4-col">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text"><%= link_to match.name, match_path(match.id) %></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <strong>Stakes:</strong> <%= match.stakes %><br>
+      <% match.teams.each do |team| %>
+        <em>Team:</em> <%=link_to team.name, team_path(team.id) %><br>
+      <%end%>
+    </div>
   </div>
-  <div class="mdl-card__supporting-text">
-    <strong>Stakes:</strong> <%= match.stakes %><br>
-    <% match.teams.each do |team| %>
-      <em>Team:</em> <%=link_to team.name, team_path(team.id) %>
-    <%end%>
-  </div>
-  
+</div>
