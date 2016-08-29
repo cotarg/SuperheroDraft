@@ -18,9 +18,9 @@ class HeroesController < ApplicationController
   end
 
   def show
-    @heroes = Hero.find_all(params[:search])
+    @hero = Hero.normalize(Hero.find_char(params[:id]))
 
-    render :hero_options
+    render :hero_display
   end
 
   def update

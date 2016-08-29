@@ -20,7 +20,7 @@
   <h4>Heroes</h4>
     <ul>
       <% team.heroes.each do |hero| %>
-        <li><%= image_tag hero.image_url, :width => "75" %> <%= "#{hero.name}"%></li>
+        <li><%= image_tag hero.image_url, :width => "75" %> <%= link_to "#{hero.name}", hero_path(hero.id_obj[:ComicVine]) %></li>
       <% end %>
     </ul>
   </section>

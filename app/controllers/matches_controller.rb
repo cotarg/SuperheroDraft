@@ -35,6 +35,8 @@ class MatchesController < ApplicationController
     @teams = @match.teams
     @single_vote = Vote.new
     @votes = @match.votes
+
+    raise
     render :match_page
   end
 
