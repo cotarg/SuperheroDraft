@@ -1,3 +1,5 @@
-<%= image_tag(team.cover_url) %><br>
-<%= link_to "Team: #{team.name}", team_path(team.id) %><br>
-<%= link_to "Match: #{team.match_id}", match_path(team.match_id) %><br>
+<div class="mdl-cell mdl-cell--4-col">
+  <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+<h2 class="mdl-card__title-text"><%= link_to "Team: #{team.name}", team_path(team.id) %></h2>
+ <div class="mdl-card__supporting-text"><%= link_to "Match: #{team.match_id}", match_path(team.match_id) %><br></div></div></div></div>
