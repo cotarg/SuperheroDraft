@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'matches#index'
+  root 'application#index'
 
  
     resources :users
@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create"
   delete '/logout' => 'sessions#destroy'
+  get "/sessions/login" => 'sessions#index', as: "login"
 
 end

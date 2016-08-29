@@ -1,28 +1,27 @@
 class TeamsController < ApplicationController
-  skip_before_action :require_login
 
   def index
-    @user = User.find_by(uid: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     @teams = Team.where(user_id: @user.id) || Team.new() #(This works, and is now the format for these.)
     render :index
   end
 
   def new
-    @user = User.find_by(uid: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     @match = Match.find_by(id: params[:match_id])
     @team = Team.new
     render :create_team
   end
 
   def create
-    @user = User.find_by(uid: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     @team = Team.create(team_create_params[:team])
     @match = Match.find(@team.match_id)
     redirect_to edit_match_team_path(@team.match_id, @team.id)
   end
 
   def edit
-    @user = User.find_by(uid: session[:user_id])
+    @user = User.find_by(id: session[:user_id])
     @team = Team.find(params[:id])
     @match = Match.find(@team.match_id)
     if params[:q]
@@ -32,7 +31,7 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(uid: session[:user_id]) 
+    @user = User.find_by(id: session[:user_id]) 
     @team = Team.find(params[:id]) 
     @match = Match.find(@team.match_id)   
     @votes = Vote.where(team_id: @team.id).count

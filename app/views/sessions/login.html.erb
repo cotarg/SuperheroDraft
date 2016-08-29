@@ -1,0 +1,2 @@
+    <%= image_tag("logos/Spotify_Icon_RGB_Green.png", :class => "img-rounded", :width => "50") unless @user %>
+    <%= link_to "Login With Spotify", "/auth/spotify" unless @user %>

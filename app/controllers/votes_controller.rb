@@ -1,5 +1,5 @@
 class VotesController < ApplicationController
-  skip_before_action :require_login
+  before_action :require_login
 
   def new
     @user = User.find_by(uid: session[:user_id])

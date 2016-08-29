@@ -1,7 +1,8 @@
+<div class="mdl-grid">
+    <% @matches.each do |match| %>
+      <%= render partial: "match_display", locals: {match: match} %><br><br>
+    <%end%>
+</div>
 
 
-
-<%= @matches.first =>
-
-<!-- I think I want this index page to show three recent matches, and link to more matches, and three random teams and link to more teams. -->
 
