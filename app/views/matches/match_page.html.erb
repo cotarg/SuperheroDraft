@@ -11,7 +11,7 @@
   </section>
 
   <section class="mdl-cell mdl-cell--4-col">
-  <% if Vote.find_by(user_id: @user.id).nil? %>
+  <% if Vote.find_by(user_id: @user.id).nil? && @match.teams.count > 0 %>
     <%= form_for @single_vote, url: votes_path do |f| %>
       <%= hidden_field_tag :user_id, @user.id %>
       <% @teams.each do |team| %>
@@ -26,6 +26,7 @@
   </section>
 </div>
 
+<%= @match.votes %>
 
 <section>
 <% @teams.each do |team| %>

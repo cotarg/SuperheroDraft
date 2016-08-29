@@ -17,12 +17,12 @@ class Hero
   def self.normalize(hero_lookup_results)
     # this should take a return value from marvel or comicvine and
     # turn it into a hero object that can be used.
-    name = hero_lookup_results.parsed_response["results"]["name"]
-    aliases = hero_lookup_results.parsed_response["results"]["aliases"]
-    description = hero_lookup_results.parsed_response["results"]["deck"]
-    image_url = Hero.image_setter(hero_lookup_results.parsed_response["results"]["image"], "icon_url")
-    id_obj = {ComicVine: hero_lookup_results.parsed_response["results"]["id"]}
-    gender = hero_lookup_results.parsed_response["results"]["gender"]
+    name = hero_lookup_results["results"]["name"]
+    aliases = hero_lookup_results["results"]["aliases"]
+    description = hero_lookup_results["results"]["deck"]
+    image_url = Hero.image_setter(hero_lookup_results["results"]["image"], "icon_url")
+    id_obj = {ComicVine: hero_lookup_results["results"]["id"]}
+    gender = hero_lookup_results["results"]["gender"]
 
     hero = Hero.new(name, aliases, description, image_url, id_obj, gender)
 
@@ -32,7 +32,7 @@ class Hero
   def self.find_all(char_name_string)
     # this will utilize comic_vine to find hero and deliver for normalizing
     search = Rails.cache.fetch("comicvine_character/#{char_name_string}", expires_in: 3.days) do
-      HTTParty.get("http://comicvine.gamespot.com/api/search/?query=#{char_name_string}&format=json&api_key=#{ENV["COMICVINE_PRIVATE"]}&resources=character&field_list=name,id,image")
+      HTTParty.get("http://comicvine.gamespot.com/api/search/?query=#{char_name_string}&format=json&api_key=#{ENV["COMICVINE_PRIVATE"]}&resources=character&field_list=name,id,image").to_hash
     end
     heroes = []
     search["results"].each do |char|
@@ -43,7 +43,7 @@ class Hero
 
   def self.find_char(character_id_string)
     search = Rails.cache.fetch("comicvine_character/#{character_id_string}", expires_in: 3.days) do
-      HTTParty.get("http://comicvine.gamespot.com/api/character/4005-#{character_id_string}/?api_key=#{ENV["COMICVINE_PRIVATE"]}&field_list=aliases,deck,name,gender,id,image&format=json")
+      HTTParty.get("http://comicvine.gamespot.com/api/character/4005-#{character_id_string}/?api_key=#{ENV["COMICVINE_PRIVATE"]}&field_list=aliases,deck,name,gender,id,image&format=json").to_hash
     end
   end
 
