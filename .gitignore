@@ -17,7 +17,6 @@
 /tmp
 .DS_Store
 .env
-/config/secrets.yml
 notes.txt
 
 # Elastic Beanstalk Files
