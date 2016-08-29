@@ -26,8 +26,6 @@
   </section>
 </div>
 
-<%= @match.votes %>
-
 <section>
 <% @teams.each do |team| %>
   <%= render partial: "/teams/team_block_view", locals: {team: team, match_votes: team.match.votes} %>

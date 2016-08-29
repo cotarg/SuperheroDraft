@@ -24,6 +24,11 @@
       <%=link_to "#{@user.name}'s", "https://open.spotify.com/user/#{@user.uid}" %> Superhero Draft<br>
       
       <%=link_to "Start a Match", new_match_path, :class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"%>
+
+      <%=link_to "See matches", matches_path, :class => "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
+
+      <%=link_to "See your teams", teams_path, :class => "mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" %>
+
       <%= link_to "Logout", logout_path, method: "delete", :class => "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %>
 
     <%end %>
