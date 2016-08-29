@@ -1,7 +1,10 @@
 
 <div class="mdl-grid">
-<h3 class="mdl-cell mdl-cell--6-col"><%= team.name %></h3><br>
-</div>
+<h3 class="mdl-cell mdl-cell--8-col"><%= team.name %></h3><br>
+
+<% if @user.id == team.user_id %>
+  <div class="mdl-cell mdl-cell--4-col"><%= link_to "Edit this team!", edit_match_team_path(team.match_id, team.id), :class => "mdl-button mdl-js-button mdl-button--raised mdl-button--colored" %></div>
+<%end%>
 
 <div class="mdl-grid">
 
