@@ -45,7 +45,7 @@
     </section>
   <h4 class="mdl-cell mdl-cell--6-col mdl-card__title-text">Votes:</h4>
   <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><strong >Votes for this team:</strong> <%= team.votes.count %></p>
-  <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><strong><em>Total Votes in Match:</em></strong> <%= match_votes.count %></p>
+  <p class="mdl-card__supporting-text mdl-cell mdl-cell--12-col"><strong><em>Total Votes in Match:</em></strong> <%= (match_votes.count -1) %></p>
 </section>
 
 </div>
