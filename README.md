@@ -19,11 +19,11 @@ To get full functionality, you will require an API keys for both [Spotify](https
 In addition, this app relies on a caching layer and is configured to use memcached. (If you prefer a different solution, you may need to reconfigure the app's caching.)
 
 ## Technologies:
-Ruby 2.3
-Rails 4.2
-Google's [Material Design Lite](https://getmdl.io/)
-memcached
-ActiveRecord and PostgreSQL
+* Ruby 2.3
+* Rails 4.2
+* Google's [Material Design Lite](https://getmdl.io/)
+* memcached
+* ActiveRecord and PostgreSQL
 
 ## License:
 This project is copyright(c) 2016, Rowan G. Cota, and is licensed under the MIT License.
